@@ -1,0 +1,22 @@
+* {
+  touch-action: pan-y;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none !important;
+}
+img {
+  max-width: 100% !important;
+  width: 100%;
+  vertical-align: middle;
+}
+input {
+  outline: none;
+  border: none;
+}
+@font-face {
+  font-family:'SHS';
+  src:url('../assets/SourceHanSansCN-Bold.otf');
+}
