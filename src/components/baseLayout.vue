@@ -6,8 +6,9 @@
       :to="item.url"
       v-for="(item, index) in items"
       :key="index"
-      >{{ item.name }}</van-tabbar-item
     >
+      {{ item.name }}
+    </van-tabbar-item>
   </van-tabbar>
 </template>
 
@@ -19,12 +20,27 @@ export default defineComponent({
     const active = ref(0);
     const items: Array<{ name: string; url: string; icon: string }> = [
       {
-        name: "考题测试",
+        name: "Shop",
         url: "/test/index",
         icon: "notes-o",
       },
       {
-        name: "考题库",
+        name: "Explore",
+        url: "/test/library",
+        icon: "idcard",
+      },
+      {
+        name: "Cart",
+        url: "/test/library",
+        icon: "idcard",
+      },
+      {
+        name: "Favorite",
+        url: "/test/library",
+        icon: "idcard",
+      },
+      {
+        name: "Account",
         url: "/test/library",
         icon: "idcard",
       },
@@ -44,7 +60,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .main {
   height: calc(100vh - 51px);
   overflow-y: auto;
