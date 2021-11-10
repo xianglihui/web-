@@ -12,8 +12,8 @@ const routes: Array<RouteRecordRaw> = [
         path: "/index",
         name: "index",
         meta: {
-          title: "首页",
-          keepAlive: true,
+          title: "Lungangen",
+          isNeedBack: false,
         },
         component: View.Index,
       },
@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "login",
         meta: {
           title: "登录",
-          keepAlive: true,
+          isNeedBack: false,
         },
         component: View.Login,
       },

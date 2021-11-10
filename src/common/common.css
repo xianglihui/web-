@@ -17,6 +17,100 @@ input {
   border: none;
 }
 @font-face {
-  font-family:'SHS';
-  src:url('../assets/SourceHanSansCN-Bold.otf');
+  font-family: "SHS";
+  src: url("../assets/SourceHanSansCN-Bold.otf");
+}
+:root {
+  --van-nav-bar-title-text-color: #ff5e00;
+}
+.flex {
+  display: flex;
+}
+
+.flex1 {
+  flex: 1;
+}
+
+.flex-justify {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-align {
+  display: flex;
+  align-items: center;
+}
+
+.flex-align-justify {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-align-start {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.flex-align-end {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+}
+
+.flex-baseline {
+  display: flex;
+  align-items: baseline;
+}
+
+.flex-spacearound {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flex-spacebetween {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-baseline-wrap {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.flex-column-spacebetween {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.flex-column-spacearound {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.flex-column-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }

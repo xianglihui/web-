@@ -1,5 +1,11 @@
 <template>
+  <!-- header navbar-->
+  <!-- <van-nav-bar :title="title" /> -->
+  <!-- main -->
+  <baseNavBar :shareData="shareData"></baseNavBar>
+  <!-- main -->
   <div class="main"><router-view></router-view></div>
+  <!-- footer tabbar -->
   <van-tabbar v-model="active" active-color="#ee0a24" inactive-color="#000">
     <van-tabbar-item
       :icon="item.icon"
@@ -13,11 +19,25 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent, onMounted, reactive, toRefs } from "vue";
+import { useRoute } from "vue-router";
+import baseNavBar from "./baseNavBar.vue";
 export default defineComponent({
+  components: {
+    baseNavBar,
+  },
   name: "Index",
   setup() {
     const active = ref(0);
+    const route = useRoute();
+    const { title, isNeedBack } = route.meta;
+    const state = reactive({
+      shareData: {
+        title: title,
+        titleColoe: "#FF5E00",
+        isNeedBack: isNeedBack,
+      },
+    });
     const items: Array<{ name: string; url: string; icon: string }> = [
       {
         name: "Shop",
@@ -45,7 +65,8 @@ export default defineComponent({
         icon: "idcard",
       },
     ];
-    return { items, active };
+    onMounted(() => {});
+    return { items, active, title, ...toRefs(state) };
   },
   mounted() {
     this.setActive();
