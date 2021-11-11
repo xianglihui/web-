@@ -20,6 +20,15 @@
         </div>
       </div>
     </div>
+    <div class="flex-spacebetween">
+      <span class="categories">Popular deals</span>
+      <span class="seeAll">see all</span>
+    </div>
+    <div>
+      <div v-for="(item, index) in 1" :key="index">
+        <productItem :goods="goods"></productItem>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -27,10 +36,13 @@
 import { defineComponent, reactive, toRefs, onMounted, ref } from "vue";
 import baseSearch from "@/components/baseSearch.vue";
 import BScroll from "better-scroll";
+import productItem from "@/components/productItem.vue";
 import fruit from "../../assets/images/itembg.png";
+import fruitImg from "../../assets/images/apple.png";
 export default defineComponent({
   components: {
     baseSearch,
+    productItem,
   },
   setup() {
     const state = reactive({
@@ -54,7 +66,14 @@ export default defineComponent({
         {
           img: fruit,
           name: "水果",
-        }
+        },
+      ],
+      goods: [
+        {
+          img: fruitImg,
+          name: "Red Apple",
+          kg: "1kg",
+        },
       ],
     });
     const leftActive = ref<number>(0);
@@ -92,7 +111,7 @@ export default defineComponent({
     color: #ff5e00;
   }
   .left-content {
-    margin-top: 30px;
+    margin: 30px 0;
     /* 此处高度必须，根据业务实际情况而定 */
     height: 20vh;
     width: 100%;
