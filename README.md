@@ -18,3 +18,6 @@ vite2 + vue3.0 + vuex + vue-router + typescript + json-server
 # 其他插件
 
 1. BetterScroll 2.0：解决移动端（已支持 PC）各种滚动场景需求
+
+# 其他
+1. common.css 包含flex通用用法
