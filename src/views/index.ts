@@ -2,5 +2,8 @@
 import Index from "./index/index.vue";
 // 登录
 import Login from "./login/index.vue";
-
-export { Index, Login };
+// 分类
+import Categories from "./categories/index.vue";
+// 购物车
+import Cart from "./cart/index.vue";
+export { Index, Login, Categories, Cart };

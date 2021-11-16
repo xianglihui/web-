@@ -18,6 +18,24 @@ const routes: Array<RouteRecordRaw> = [
         component: View.Index,
       },
       {
+        path: "/cart",
+        name: "cart",
+        meta: {
+          title: "Cart",
+          isNeedBack: false,
+        },
+        component: View.Cart,
+      },
+      {
+        path: "/categories",
+        name: "categories",
+        meta: {
+          title: "Categories",
+          isNeedBack: false,
+        },
+        component: View.Categories,
+      },
+      {
         path: "/login",
         name: "login",
         meta: {

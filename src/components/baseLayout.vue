@@ -41,17 +41,17 @@ export default defineComponent({
     const items: Array<{ name: string; url: string; icon: string }> = [
       {
         name: "Shop",
-        url: "/test/index",
+        url: "/index",
         icon: "notes-o",
       },
       {
         name: "Explore",
-        url: "/test/library",
+        url: "/categories",
         icon: "idcard",
       },
       {
         name: "Cart",
-        url: "/test/library",
+        url: "/cart",
         icon: "idcard",
       },
       {

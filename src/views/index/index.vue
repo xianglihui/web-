@@ -24,9 +24,12 @@
       <span class="categories">Popular deals</span>
       <span class="seeAll">see all</span>
     </div>
-    <div>
-      <div v-for="(item, index) in 1" :key="index">
-        <productItem :goods="goods"></productItem>
+    <!-- product item -->
+    <div class="context" ref="productRef">
+      <div class="pro">
+        <div v-for="(item, index) in goods" :key="index" class="productList">
+          <productItem :goods="item"></productItem>
+        </div>
       </div>
     </div>
   </div>
@@ -73,23 +76,56 @@ export default defineComponent({
           img: fruitImg,
           name: "Red Apple",
           kg: "1kg",
+          priceg: "priceg",
+          price: "4.99",
+        },
+        {
+          img: fruitImg,
+          name: "Red Apple",
+          kg: "1kg",
+          priceg: "priceg",
+          price: "4.99",
+        },
+        {
+          img: fruitImg,
+          name: "Red Apple",
+          kg: "1kg",
+          priceg: "priceg",
+          price: "4.99",
+        },
+        {
+          img: fruitImg,
+          name: "Red Apple",
+          kg: "1kg",
+          priceg: "priceg",
+          price: "4.99",
         },
       ],
     });
     const leftActive = ref<number>(0);
     const leftScroll = ref<any>(null);
+    const productRef = ref<any>(null);
     const leftItemClick = (e: number) => {
       leftActive.value = e;
     };
     onMounted(() => {
       const leftBs = new BScroll(leftScroll.value, {
         scrollX: true,
+        scrollY: false,
         probeType: 3, // listening scroll event
       });
+      const productScrollX = new BScroll(productRef.value, {
+        scrollX: true,
+        scrollY: false,
+        probeType: 3, // listening scroll event
+      });
+      console.log("leftBs", leftBs);
+      console.log("productScrollX", productScrollX);
     });
     return {
       ...toRefs(state),
       leftItemClick,
+      productRef,
       leftActive,
       leftScroll,
     };
@@ -116,7 +152,6 @@ export default defineComponent({
     height: 20vh;
     width: 100%;
     white-space: nowrap;
-    overflow: hidden;
   }
   .left {
     /* 此处高度不写，根据子元素高度自适应 */
@@ -125,10 +160,24 @@ export default defineComponent({
   .left-item {
     display: inline-block;
     text-align: center;
-    padding: 0 10px;
+    margin-right: 16px;
     .name {
       margin-top: 16px;
     }
   }
+  .context {
+    width: 100%;
+    margin: 32px 0;
+    white-space: nowrap;
+    .pro {
+      height: 200px;
+      display: inline-block;
+    }
+    .productList {
+      display: inline-block;
+      margin-right: 16px;
+    }
+  }
 }
 </style>
+%
