@@ -6,4 +6,7 @@ import Login from "./login/index.vue";
 import Categories from "./categories/index.vue";
 // 购物车
 import Cart from "./cart/index.vue";
-export { Index, Login, Categories, Cart };
+// 收藏
+import Favorite from "./favorite/index.vue";
+
+export { Index, Login, Categories, Cart, Favorite };

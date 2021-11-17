@@ -8,4 +8,10 @@ import "vant/lib/index.css";
 import "./utils/rem.js";
 import "./common/common.css";
 
+router.beforeEach((to, from, next) => {
+  console.log("to.meta.title", to.meta.title);
+  store.commit("setTitle", to.meta.title);
+  next();
+});
+
 createApp(App).use(router).use(store).use(Vant).mount("#app");

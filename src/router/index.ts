@@ -16,6 +16,10 @@ const routes: Array<RouteRecordRaw> = [
           isNeedBack: false,
         },
         component: View.Index,
+        // beforeEnter: (to, from, next) => {
+        //   console.log("to",to)
+        //   next();
+        // },
       },
       {
         path: "/cart",
@@ -25,6 +29,15 @@ const routes: Array<RouteRecordRaw> = [
           isNeedBack: false,
         },
         component: View.Cart,
+      },
+      {
+        path: "/favorite",
+        name: "favorite",
+        meta: {
+          title: "Favorite",
+          isNeedBack: false,
+        },
+        component: View.Favorite,
       },
       {
         path: "/categories",
@@ -51,4 +64,5 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+
 export default router;

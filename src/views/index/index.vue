@@ -119,8 +119,6 @@ export default defineComponent({
         scrollY: false,
         probeType: 3, // listening scroll event
       });
-      console.log("leftBs", leftBs);
-      console.log("productScrollX", productScrollX);
     });
     return {
       ...toRefs(state),

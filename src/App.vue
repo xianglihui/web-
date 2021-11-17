@@ -2,6 +2,7 @@
   <router-view></router-view>
 </template>
 <script setup lang="ts">
+
 document.addEventListener("touchstart", function (event) {
   if (event.touches.length > 1) {
     event.preventDefault();

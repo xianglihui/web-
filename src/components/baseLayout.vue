@@ -2,7 +2,7 @@
   <!-- header navbar-->
   <!-- <van-nav-bar :title="title" /> -->
   <!-- main -->
-  <baseNavBar :shareData="shareData"></baseNavBar>
+  <baseNavBar></baseNavBar>
   <!-- main -->
   <div class="main"><router-view></router-view></div>
   <!-- footer tabbar -->
@@ -19,8 +19,16 @@
 </template>
 
 <script lang="ts">
-import { ref, defineComponent, onMounted, reactive, toRefs } from "vue";
+import {
+  ref,
+  defineComponent,
+  onMounted,
+  reactive,
+  toRefs,
+  computed,
+} from "vue";
 import { useRoute } from "vue-router";
+import { useStore } from "vuex";
 import baseNavBar from "./baseNavBar.vue";
 export default defineComponent({
   components: {
@@ -30,14 +38,18 @@ export default defineComponent({
   setup() {
     const active = ref(0);
     const route = useRoute();
-    const { title, isNeedBack } = route.meta;
-    const state = reactive({
-      shareData: {
-        title: title,
-        titleColoe: "#FF5E00",
-        isNeedBack: isNeedBack,
-      },
+    const store = useStore();
+    const { isNeedBack } = route.meta;
+    const title = computed(() => {
+      return store.getters.title;
     });
+    // const state = reactive({
+    //   navData: {
+    //     title: title,
+    //     titleColoe: "#FF5E00",
+    //     isNeedBack: isNeedBack,
+    //   },
+    // });
     const items: Array<{ name: string; url: string; icon: string }> = [
       {
         name: "Shop",
@@ -66,7 +78,7 @@ export default defineComponent({
       },
     ];
     onMounted(() => {});
-    return { items, active, title, ...toRefs(state) };
+    return { items, active, title };
   },
   mounted() {
     this.setActive();
