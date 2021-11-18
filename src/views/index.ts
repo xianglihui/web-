@@ -8,5 +8,8 @@ import Categories from "./categories/index.vue";
 import Cart from "./cart/index.vue";
 // 收藏
 import Favorite from "./favorite/index.vue";
-
-export { Index, Login, Categories, Cart, Favorite };
+// 个人中心
+import Account from "./account/index.vue";
+// 简介
+import Profile from "./account/profile.vue";
+export { Index, Login, Categories, Cart, Favorite, Account, Profile };

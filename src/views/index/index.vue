@@ -35,99 +35,83 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, toRefs, onMounted, ref } from "vue";
+<script lang="ts" setup>
+import { reactive, onMounted, ref } from "vue";
 import baseSearch from "@/components/baseSearch.vue";
 import BScroll from "better-scroll";
 import productItem from "@/components/productItem.vue";
 import fruit from "../../assets/images/itembg.png";
 import fruitImg from "../../assets/images/apple.png";
-export default defineComponent({
-  components: {
-    baseSearch,
-    productItem,
+
+const categoryList = reactive([
+  {
+    img: fruit,
+    name: "水果",
   },
-  setup() {
-    const state = reactive({
-      categoryList: [
-        {
-          img: fruit,
-          name: "水果",
-        },
-        {
-          img: fruit,
-          name: "水果",
-        },
-        {
-          img: fruit,
-          name: "水果",
-        },
-        {
-          img: fruit,
-          name: "水果",
-        },
-        {
-          img: fruit,
-          name: "水果",
-        },
-      ],
-      goods: [
-        {
-          img: fruitImg,
-          name: "Red Apple",
-          kg: "1kg",
-          priceg: "priceg",
-          price: "4.99",
-        },
-        {
-          img: fruitImg,
-          name: "Red Apple",
-          kg: "1kg",
-          priceg: "priceg",
-          price: "4.99",
-        },
-        {
-          img: fruitImg,
-          name: "Red Apple",
-          kg: "1kg",
-          priceg: "priceg",
-          price: "4.99",
-        },
-        {
-          img: fruitImg,
-          name: "Red Apple",
-          kg: "1kg",
-          priceg: "priceg",
-          price: "4.99",
-        },
-      ],
-    });
-    const leftActive = ref<number>(0);
-    const leftScroll = ref<any>(null);
-    const productRef = ref<any>(null);
-    const leftItemClick = (e: number) => {
-      leftActive.value = e;
-    };
-    onMounted(() => {
-      const leftBs = new BScroll(leftScroll.value, {
-        scrollX: true,
-        scrollY: false,
-        probeType: 3, // listening scroll event
-      });
-      const productScrollX = new BScroll(productRef.value, {
-        scrollX: true,
-        scrollY: false,
-        probeType: 3, // listening scroll event
-      });
-    });
-    return {
-      ...toRefs(state),
-      leftItemClick,
-      productRef,
-      leftActive,
-      leftScroll,
-    };
+  {
+    img: fruit,
+    name: "水果",
   },
+  {
+    img: fruit,
+    name: "水果",
+  },
+  {
+    img: fruit,
+    name: "水果",
+  },
+  {
+    img: fruit,
+    name: "水果",
+  },
+]);
+const goods = reactive([
+  {
+    img: fruitImg,
+    name: "Red Apple",
+    kg: "1kg",
+    priceg: "priceg",
+    price: "4.99",
+  },
+  {
+    img: fruitImg,
+    name: "Red Apple",
+    kg: "1kg",
+    priceg: "priceg",
+    price: "4.99",
+  },
+  {
+    img: fruitImg,
+    name: "Red Apple",
+    kg: "1kg",
+    priceg: "priceg",
+    price: "4.99",
+  },
+  {
+    img: fruitImg,
+    name: "Red Apple",
+    kg: "1kg",
+    priceg: "priceg",
+    price: "4.99",
+  },
+]);
+const leftActive = ref<number>(0);
+const leftScroll = ref<any>(null);
+const productRef = ref<any>(null);
+const leftItemClick = (e: number) => {
+  leftActive.value = e;
+};
+onMounted(() => {
+  const leftBs = new BScroll(leftScroll.value, {
+    scrollX: true,
+    scrollY: false,
+    probeType: 3, // listening scroll event
+  });
+  const productScrollX = new BScroll(productRef.value, {
+    scrollX: true,
+    scrollY: false,
+    probeType: 3, // listening scroll event
+  });
 });
 </script>
 
@@ -178,4 +162,3 @@ export default defineComponent({
   }
 }
 </style>
-%

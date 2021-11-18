@@ -49,6 +49,24 @@ const routes: Array<RouteRecordRaw> = [
         component: View.Categories,
       },
       {
+        path: "/account",
+        name: "account",
+        meta: {
+          title: "Account",
+          isNeedBack: false,
+        },
+        component: View.Account,
+      },
+      {
+        path: "/account/profile",
+        name: "profile",
+        meta: {
+          title: "Profile",
+          isNeedBack: false,
+        },
+        component: View.Profile,
+      },
+      {
         path: "/login",
         name: "login",
         meta: {

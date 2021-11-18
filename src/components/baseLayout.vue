@@ -1,10 +1,8 @@
 <template>
   <!-- header navbar-->
-  <!-- <van-nav-bar :title="title" /> -->
+  <baseNavBar :navConfig="navConfig"></baseNavBar>
   <!-- main -->
-  <baseNavBar></baseNavBar>
-  <!-- main -->
-  <div class="main"><router-view></router-view></div>
+  <div class="baseMain"><router-view></router-view></div>
   <!-- footer tabbar -->
   <van-tabbar v-model="active" active-color="#ee0a24" inactive-color="#000">
     <van-tabbar-item
@@ -18,83 +16,75 @@
   </van-tabbar>
 </template>
 
-<script lang="ts">
-import {
-  ref,
-  defineComponent,
-  onMounted,
-  reactive,
-  toRefs,
-  computed,
-} from "vue";
+<script lang="ts" setup>
+// import { watch } from "fs";
+import { watch } from "fs";
+import { ref, onMounted, computed, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 import baseNavBar from "./baseNavBar.vue";
-export default defineComponent({
-  components: {
-    baseNavBar,
-  },
-  name: "Index",
-  setup() {
-    const active = ref(0);
-    const route = useRoute();
-    const store = useStore();
-    const { isNeedBack } = route.meta;
-    const title = computed(() => {
-      return store.getters.title;
-    });
-    // const state = reactive({
-    //   navData: {
-    //     title: title,
-    //     titleColoe: "#FF5E00",
-    //     isNeedBack: isNeedBack,
-    //   },
-    // });
-    const items: Array<{ name: string; url: string; icon: string }> = [
-      {
-        name: "Shop",
-        url: "/index",
-        icon: "notes-o",
-      },
-      {
-        name: "Explore",
-        url: "/categories",
-        icon: "idcard",
-      },
-      {
-        name: "Cart",
-        url: "/cart",
-        icon: "idcard",
-      },
-      {
-        name: "Favorite",
-        url: "/test/library",
-        icon: "idcard",
-      },
-      {
-        name: "Account",
-        url: "/test/library",
-        icon: "idcard",
-      },
-    ];
-    onMounted(() => {});
-    return { items, active, title };
-  },
-  mounted() {
-    this.setActive();
-  },
-  methods: {
-    setActive() {
-      this.items.map((v: { url: string }, index: number) => {
-        if (v.url === this.$route.path) return (this.active = index);
-      });
-    },
-  },
+const active = ref(0);
+const route = useRoute();
+const store = useStore();
+const title = computed(() => {
+  console.log("title@", title);
+  return store.getters.title;
 });
+
+// defineExpose({
+//   title,
+//   baseNavBar,
+// });
+const navConfig = reactive({
+  isBack: true, // 回退默认为true
+  ImgSrc: "", //回退图片
+  title: title, // 中间文字
+  rightText: "", //右边文字
+  titleColor: "#FF5E00", //中间文字颜色
+  rightTextColor: "", //右边文字颜色
+  isNeedBack: "", //后退图标
+  titleWeight: 700, //字体粗细
+});
+
+const items: Array<{ name: string; url: string; icon: string }> = [
+  {
+    name: "Shop",
+    url: "/index",
+    icon: "notes-o",
+  },
+  {
+    name: "Explore",
+    url: "/categories",
+    icon: "idcard",
+  },
+  {
+    name: "Cart",
+    url: "/cart",
+    icon: "idcard",
+  },
+  {
+    name: "Favorite",
+    url: "/favorite",
+    icon: "idcard",
+  },
+  {
+    name: "Account",
+    url: "/account",
+    icon: "idcard",
+  },
+];
+onMounted(() => {
+  setActive();
+});
+const setActive = () => {
+  items.map((v: { url: string }, index: number) => {
+    if (v.url === route.path) return (active.value = index);
+  });
+};
 </script>
 
 <style lang="scss" scoped>
-.main {
+.baseMain {
   height: calc(100vh - 51px);
   overflow-y: auto;
 }

@@ -2,80 +2,78 @@
   <div class="baseNavBar">
     <div class="appraisalTooBar">
       <div class="left_box" @click="backApp()">
-        <van-icon name="arrow-left" v-if="isNeedBack" />
+        <van-icon name="arrow-left" v-if="navConfig.isNeedBack" />
       </div>
       <p
         class="appraisal_title"
-        :style="{ color: titleColor, fontWeight: titleWeight }"
+        :style="{ color: navConfig.titleColor, fontWeight: navConfig.titleWeight }"
       >
-        {{ title }}
+        {{ navConfig.title }}
       </p>
       <div
         class="appraisal_text"
         @click="handleShare"
-        :style="{ color: rightTextColor }"
+        :style="{ color: navConfig.rightTextColor }"
       >
-        {{ rightText }}
+        {{ navConfig.rightText }}
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+interface Config {
+  isBack: boolean;
+  ImgSrc: string;
+  title: string;
+  rightText: string;
+  titleColor: string;
+  rightTextColor: string;
+  isNeedBack: string;
+  titleWeight: number;
+}
 import { eqMethod } from "../utils/provingEq.js";
 import { defineComponent, reactive, toRefs, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
+const props = defineProps<{
+  navConfig: Config;
+}>();
 
-export default defineComponent({
-  props: ["navData"],
-  setup(props) {
-    const { navData } = toRefs(props);
-    console.log("navData", navData);
-    // const { title, titleColor, isNeedBack } = navData.value;
-    const router = useRouter();
-    const store = useStore();
-    // 标题
-    const title = computed(() => {
-      return store.getters.title;
-    });
-    const state = reactive({
-      isBack: true, // 回退默认为true
-      ImgSrc: "", //回退图片
-      title: title, // 中间文字
-      rightText: "", //右边文字
-      titleColor: "#FF5E00", //中间文字颜色
-      rightTextColor: "", //右边文字颜色
-      isNeedBack: "", //后退图标
-      titleWeight: 700, //字体粗细
-    });
-    // 回退
-    const back = () => {
-      if (state.isBack == true) {
-        //判断如果为true 回退
-        backApp();
-      } else {
-        //否则回退到上一级
-        router.back();
-      }
-    };
-    //这里调原生的方法回退
-    const backApp = () => {
-      //   if (eqMethod.verifyAndroid()) {
-      //     //安卓
-      //     window.webUser.backWeb();
-      //   } else if (eqMethod.verifyIos()) {
-      //     //ios
-      //     window.webkit.messageHandlers.backWeb.postMessage(null);
-      //   }
-      router.back();
-    };
-
-    return {
-      ...toRefs(state),
-    };
-  },
-});
+console.log("props@", props);
+const router = useRouter();
+const store = useStore();
+// 标题
+// const title = computed(() => {
+//   return store.getters.title;
+// });
+// const state = reactive({
+//   isBack: true, // 回退默认为true
+//   ImgSrc: "", //回退图片
+//   title: "", // 中间文字
+//   rightText: "", //右边文字
+//   titleColor: "#FF5E00", //中间文字颜色
+//   rightTextColor: "", //右边文字颜色
+//   isNeedBack: "", //后退图标
+//   titleWeight: 700, //字体粗细
+// });
+// 回退
+// const back = () => {
+//   if (navConfig.isBack == true) {
+//     //判断如果为true 回退
+//     backApp();
+//   } else {
+//     //否则回退到上一级
+//     router.back();
+//   }
+// };
+//这里调原生的方法回退
+const backApp = () => {
+  router.back();
+};
+// defineExpose({
+//   ...toRefs(state),
+// });
 </script>
 
 <style lang="scss">

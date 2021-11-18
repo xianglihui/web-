@@ -11,52 +11,41 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import { defineComponent, reactive, toRefs, onMounted, ref } from "vue";
 import baseSearch from "@/components/baseSearch.vue";
 import fruit from "../../assets/images/itembg.png";
-export default defineComponent({
-  components: {
-    baseSearch,
+
+const list = reactive([
+  {
+    img: fruit,
+    name: "Fruits",
   },
-  setup() {
-    const state = reactive({
-      list: [
-        {
-          img: fruit,
-          name: "Fruits",
-        },
-        {
-          img: fruit,
-          name: "Fruits",
-        },
-        {
-          img: fruit,
-          name: "Fruits",
-        },
-        {
-          img: fruit,
-          name: "Fruits",
-        },
-        {
-          img: fruit,
-          name: "Fruits",
-        },
-        {
-          img: fruit,
-          name: "Fruits",
-        },
-        {
-          img: fruit,
-          name: "Fruits",
-        },
-      ],
-    });
-    return {
-      ...toRefs(state),
-    };
+  {
+    img: fruit,
+    name: "Fruits",
   },
-});
+  {
+    img: fruit,
+    name: "Fruits",
+  },
+  {
+    img: fruit,
+    name: "Fruits",
+  },
+  {
+    img: fruit,
+    name: "Fruits",
+  },
+  {
+    img: fruit,
+    name: "Fruits",
+  },
+  {
+    img: fruit,
+    name: "Fruits",
+  },
+]);
 </script>
 
 <style lang="scss">

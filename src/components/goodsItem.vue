@@ -8,6 +8,7 @@
         <div class="goodsName">{{ goods.name }}</div>
         <div class="isSlot">
           <slot name="stepper"></slot>
+          <slot name="add"></slot>
         </div>
       </div>
       <div class="goodsPrice">
@@ -66,7 +67,7 @@ export default defineComponent({
     .price {
       position: absolute;
       right: 16px;
-      bottom: 0;
+      bottom: 5px;
       font-size: 18px;
       font-weight: 400;
       color: #6d3805;

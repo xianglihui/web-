@@ -1,15 +1,8 @@
 <template>
   <div>
-    <div v-for="(item, index) in list" :key="index">
-      <goodsItem :goods="item">
-        <template v-slot:add>
-          <view class="addCart">
-            <van-icon name="shopping-cart-o" />
-            add to cart
-          </view>
-        </template>
-      </goodsItem>
-    </div>
+    <van-cell-group :border="false">
+      <van-cell title="Profile" icon="location-o" :border="false" />
+    </van-cell-group>
   </div>
 </template>
 
@@ -32,5 +25,8 @@ const list = reactive([
 .addCart {
   font-size: 14px;
   color: #ff5e00;
+}
+.--van-cell-border-color {
+  color: #ffffff;
 }
 </style>

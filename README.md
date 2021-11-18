@@ -47,3 +47,6 @@ yarn
 - ci 持续集成
 - types 类型定义文件更改
 - wip 开发中
+
+# 遇见的问题
+- provide() can only be used inside setup(),起因是想通过router.beforeEach拿到meta.title通过provide存储，再在子组件中通过inject取出，实践后报此警告并打印undefined.
