@@ -1,6 +1,6 @@
 <template>
   <!-- header navbar-->
-  <baseNavBar :navConfig="navConfig"></baseNavBar>
+  <!-- <baseNavBar :navConfig="navConfig"></baseNavBar> -->
   <!-- main -->
   <div class="baseMain"><router-view></router-view></div>
   <!-- footer tabbar -->
@@ -17,34 +17,32 @@
 </template>
 
 <script lang="ts" setup>
-// import { watch } from "fs";
-import { watch } from "fs";
 import { ref, onMounted, computed, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
-import baseNavBar from "./baseNavBar.vue";
+// import baseNavBar from "./baseNavBar.vue";
 const active = ref(0);
 const route = useRoute();
 const store = useStore();
-const title = computed(() => {
-  console.log("title@", title);
-  return store.getters.title;
-});
+// const title = computed(() => {
+//   console.log("title@", title);
+//   return store.getters.title;
+// });
 
 // defineExpose({
 //   title,
 //   baseNavBar,
 // });
-const navConfig = reactive({
-  isBack: true, // 回退默认为true
-  ImgSrc: "", //回退图片
-  title: title, // 中间文字
-  rightText: "", //右边文字
-  titleColor: "#FF5E00", //中间文字颜色
-  rightTextColor: "", //右边文字颜色
-  isNeedBack: "", //后退图标
-  titleWeight: 700, //字体粗细
-});
+// const navConfig = reactive({
+//   isBack: true, // 回退默认为true
+//   ImgSrc: "", //回退图片
+//   title: title, // 中间文字
+//   rightText: "", //右边文字
+//   titleColor: "#FF5E00", //中间文字颜色
+//   rightTextColor: "", //右边文字颜色
+//   isNeedBack: "", //后退图标
+//   titleWeight: 700, //字体粗细
+// });
 
 const items: Array<{ name: string; url: string; icon: string }> = [
   {

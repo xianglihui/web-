@@ -16,10 +16,6 @@ const routes: Array<RouteRecordRaw> = [
           isNeedBack: false,
         },
         component: View.Index,
-        // beforeEnter: (to, from, next) => {
-        //   console.log("to",to)
-        //   next();
-        // },
       },
       {
         path: "/cart",
@@ -66,16 +62,25 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: View.Profile,
       },
-      {
-        path: "/login",
-        name: "login",
-        meta: {
-          title: "登录",
-          isNeedBack: false,
-        },
-        component: View.Login,
-      },
     ],
+  },
+  {
+    path: "/welcome",
+    name: "welcome",
+    meta: {
+      title: "welcome",
+      isNeedBack: false,
+    },
+    component: View.Welcome,
+  },
+  {
+    path: "/register",
+    name: "register",
+    meta: {
+      title: "register",
+      isNeedBack: true,
+    },
+    component: View.Register,
   },
 ];
 const router = createRouter({

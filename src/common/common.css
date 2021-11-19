@@ -22,6 +22,7 @@ input {
 }
 :root {
   --van-nav-bar-title-text-color: #ff5e00;
+  /* --van-cell-background-color: #ff5e00; */
   /* --van-stepper-button-round-theme-color: #ffffff;
   --van-active-color: #f4f4f4; */
 }

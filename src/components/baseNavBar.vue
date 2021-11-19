@@ -6,7 +6,10 @@
       </div>
       <p
         class="appraisal_title"
-        :style="{ color: navConfig.titleColor, fontWeight: navConfig.titleWeight }"
+        :style="{
+          color: navConfig.titleColor,
+          fontWeight: navConfig.titleWeight,
+        }"
       >
         {{ navConfig.title }}
       </p>
@@ -43,20 +46,6 @@ const props = defineProps<{
 console.log("props@", props);
 const router = useRouter();
 const store = useStore();
-// 标题
-// const title = computed(() => {
-//   return store.getters.title;
-// });
-// const state = reactive({
-//   isBack: true, // 回退默认为true
-//   ImgSrc: "", //回退图片
-//   title: "", // 中间文字
-//   rightText: "", //右边文字
-//   titleColor: "#FF5E00", //中间文字颜色
-//   rightTextColor: "", //右边文字颜色
-//   isNeedBack: "", //后退图标
-//   titleWeight: 700, //字体粗细
-// });
 // 回退
 // const back = () => {
 //   if (navConfig.isBack == true) {
@@ -77,10 +66,13 @@ const backApp = () => {
 </script>
 
 <style lang="scss">
+.left_box {
+  color: #ff5e00;
+}
 .baseNavBar {
   position: relative;
   width: 100%;
-  height: 46px;
+  // height: 115px;
   line-height: 46px;
   padding: 0 10px;
 }
@@ -97,8 +89,8 @@ const backApp = () => {
   vertical-align: middle;
 }
 .appraisal_title {
-  margin: 0 auto;
-  font-size: 16px;
+  margin: 30px auto 0;
+  font-size: 24px;
 }
 .appraisal_text {
   position: absolute;

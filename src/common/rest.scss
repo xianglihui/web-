@@ -1,0 +1,14 @@
+@font-face {
+	font-family: 'custom-icon';  /* Project id 1646355 */
+	src: url('//at.alicdn.com/t/font_1646355_9ckmm3u8red.woff2?t=1630577299761') format('woff2'),
+		 url('//at.alicdn.com/t/font_1646355_9ckmm3u8red.woff?t=1630577299761') format('woff'),
+		 url('//at.alicdn.com/t/font_1646355_9ckmm3u8red.ttf?t=1630577299761') format('truetype');
+}
+.custom-icon {
+	/* 引用上面声明的"custom-icon"字体 */
+	font-family: "custom-icon" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}

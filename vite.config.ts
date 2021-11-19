@@ -3,6 +3,7 @@ import { loadEnv } from "vite";
 import vue from "@vitejs/plugin-vue";
 import styleImport from "vite-plugin-style-import";
 import path from "path";
+import vueJsx from "@vitejs/plugin-vue-jsx";
 // 返回当前Node.js进程执行时的工作目录
 const CWD = process.cwd();
 // 环境变量
@@ -22,6 +23,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     plugins: [
       vue(),
+      vueJsx(),
       // 在 Vite 项目中按需引入组件
       styleImport({
         libs: [
