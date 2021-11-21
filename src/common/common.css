@@ -51,6 +51,12 @@ input {
   justify-content: center;
 }
 
+.flex-align-justify-spacebetween {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .flex-align-start {
   display: flex;
   justify-content: flex-start;
@@ -117,4 +123,16 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+}
+
+.common-btn-style {
+  width: 343px;
+  height: 50px;
+  background-color: #ff5e00;
+  text-align: center;
+  line-height: 50px;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 30px;
+  color: #ffffff;
 }

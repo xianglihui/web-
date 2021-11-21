@@ -5,7 +5,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import baseNavBar from "./components/baseNavBar.vue";
+import baseNavBar from "@/components/baseNavBar.vue";
 import { onMounted, reactive, computed } from "vue";
 import { useStore } from "vuex";
 const store = useStore();
@@ -21,7 +21,6 @@ const isShowNavBar = computed(() => {
 const isNeedBack = computed(() => {
   return store.getters.back;
 });
-console.log("isNeedBack", isNeedBack);
 // navBar配置
 const navConfig = reactive({
   isBack: true, // 回退默认为true

@@ -43,7 +43,6 @@ const props = defineProps<{
   navConfig: Config;
 }>();
 
-console.log("props@", props);
 const router = useRouter();
 const store = useStore();
 // 回退
