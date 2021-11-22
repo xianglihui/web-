@@ -77,7 +77,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/register",
     name: "register",
     meta: {
-      title: "register",
+      title: "Sign Up",
       isNeedBack: true,
     },
     component: View.Register,

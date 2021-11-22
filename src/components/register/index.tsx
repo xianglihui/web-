@@ -1,21 +1,23 @@
 import { ref, defineComponent, h, toRefs } from "vue";
+import { useRouter } from "vue-router";
 // step1
 import Step1 from "@/components/register/step1.vue";
+import Step2 from "@/components/register/step2.vue"
 export default defineComponent({
   // tsx中需要提前申明
-  props: {
-    step: {
-      type: Number,
-    },
-  },
+  // props: {
+  //   step: {
+  //     type: Number,
+  //   },
+  // },
   setup(props) {
-    // const container = [<step1 />];
-    // const container = [step1];
-    const container = {
-      step1: () => <Step1></Step1>,
+    const router = useRouter();
+    const stepFunc = () => {
+      // router.push({ path: "/account/profile" });
     };
-    const { step } = toRefs(props);
-    // return () => h(container[step.value as number]);
+    const container = {
+      step1: () => <Step1 onStepFunc={stepFunc}></Step1>,
+    };
     return () => h(<div>{container.step1()}</div>);
   },
 });

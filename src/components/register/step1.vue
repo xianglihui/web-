@@ -24,7 +24,7 @@
     <p class="tip">
       We need to verify you. We will send you a one time verification code.
     </p>
-    <div class="common-btn-style btn" @click="next">Next</div>
+    <div class="common-btn-style btn" @click="stepNext">Next</div>
   </div>
 </template>
 
@@ -32,7 +32,7 @@
 // import istep from "@/components/register/istep.vue";
 import national from "@/assets/images/national.png";
 import { useRouter } from "vue-router";
-import { ref } from "vue";
+import { ref, defineProps, defineEmits, inject } from "vue";
 const router = useRouter();
 const themeVars = {
   cellBackgroundColor: "#F3F3F3",
@@ -40,12 +40,20 @@ const themeVars = {
 };
 const username = ref("");
 const phone = ref("");
+const emit = defineEmits(["stepFunc"]);
 const onSubmit = () => {
   console.log("submit");
 };
-const next = () => {
-  router.push({ path: "/account/profile" });
+const next: any = inject("next");
+const stepNext = () => {
+  // emit("stepFunc");
+  console.log("@@@");
+  next();
 };
+//
+defineExpose({
+  stepNext,
+});
 </script>
 <style lang="scss" scoped>
 .van-field {

@@ -49,4 +49,29 @@ yarn
 - wip 开发中
 
 # 遇见的问题
-- provide() can only be used inside setup(),起因是想通过router.beforeEach拿到meta.title通过provide存储，再在子组件中通过inject取出，实践后报此警告并打印undefined.
+
+- provide() can only be used inside setup(),起因是想通过 router.beforeEach 拿到 meta.title 通过 provide 存储，再在子组件中通过 inject 取出，实践后报此警告并打印 undefined.
+- .tsx 无法通过`template`模板语法传递 slot 插槽（应该能实现，但是能力与资料有限）,查看 src/components/field.tsx,line:32，无法插入插槽，tsx 不识别 template）
+
+# 对 vue + tsx 思考
+
+- 个人觉得业务方面代码 template 模板语法够用，对于灵活性更高的场景可以使用 tsx(如 v-if 与 v-else),查看 src/views/login/register.tsx,属于试验代码，真实开发场景下觉得通过`component`组件渲染更加优雅。
+
+```javascript
+// component
+<template v-for="(item,index) in test">
+    <component :is="item" v-if="index == step" :key="index" ></component>
+</template>
+
+<script lang="ts" setup>
+import Step from '...'
+...
+    const test = [Step1,Step2,...]
+</script>
+```
+
+```javascript
+// tsx
+return () =>
+  h(<div>{step.value === 0 ? <Step1></Step1> : <Step2></Step2>}</div>);
+```
