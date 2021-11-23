@@ -24,7 +24,7 @@ export default defineComponent({
     const next = () => {
       currentStep.value++;
       console.log("currentStep.value", currentStep.value);
-      router.push({ name: "register", query: { step: 1 } });
+      router.push({ name: "register", query: { step: currentStep.value } });
     };
     // provide
     provide("next", next);

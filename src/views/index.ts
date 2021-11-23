@@ -14,6 +14,10 @@ import Favorite from "./favorite/index.vue";
 import Account from "./account/index.vue";
 // 简介
 import Profile from "./account/profile.vue";
+// 水果
+import Fruits from "./fruits/index.vue";
+// 详情
+import Product from "./product/index.vue";
 export {
   Index,
   Welcome,
@@ -23,4 +27,6 @@ export {
   Account,
   Profile,
   Register,
+  Fruits,
+  Product,
 };

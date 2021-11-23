@@ -31,8 +31,10 @@ export default defineComponent({
 .productWarp {
   position: relative;
   overflow: hidden;
-  width: 150px;
-  height: 189px;
+  // width: 150px;
+  // height: 189px;
+  width: 164px;
+  height: 194px;
   padding: 0 10px;
   border-radius: 20px;
   box-shadow: 0px 1px 6px -1px rgba(0, 0, 0, 0.29);

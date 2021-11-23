@@ -36,6 +36,24 @@ const routes: Array<RouteRecordRaw> = [
         component: View.Favorite,
       },
       {
+        path: "/fruits",
+        name: "fruits",
+        meta: {
+          title: "Fruits",
+          isNeedBack: false,
+        },
+        component: View.Fruits,
+      },
+      {
+        path: "/product",
+        name: "product",
+        meta: {
+          title: "Product",
+          isNeedBack: false,
+        },
+        component: View.Product,
+      },
+      {
         path: "/categories",
         name: "categories",
         meta: {
@@ -68,7 +86,7 @@ const routes: Array<RouteRecordRaw> = [
     path: "/welcome",
     name: "welcome",
     meta: {
-      title: "welcome",
+      title: "Welcome",
       isNeedBack: false,
     },
     component: View.Welcome,
