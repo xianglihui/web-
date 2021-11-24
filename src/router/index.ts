@@ -63,6 +63,15 @@ const routes: Array<RouteRecordRaw> = [
         component: View.Categories,
       },
       {
+        path: "/order",
+        name: "order",
+        meta: {
+          title: "order",
+          isNeedBack: false,
+        },
+        component: View.Order,
+      },
+      {
         path: "/account",
         name: "account",
         meta: {
@@ -79,6 +88,42 @@ const routes: Array<RouteRecordRaw> = [
           isNeedBack: false,
         },
         component: View.Profile,
+      },
+      {
+        path: "/account/profile/edit",
+        name: "editProfile",
+        meta: {
+          title: "Edit Profile",
+          isNeedBack: false,
+        },
+        component: View.EditProfile,
+      },
+      {
+        path: "/account/change",
+        name: "changePassword",
+        meta: {
+          title: "Change Password",
+          isNeedBack: false,
+        },
+        component: View.ChangePassword,
+      },
+      {
+        path: "/account/newCard",
+        name: "changePassword",
+        meta: {
+          title: "New Card",
+          isNeedBack: false,
+        },
+        component: View.NewCard,
+      },
+      {
+        path: "/account/myCards",
+        name: "changePassword",
+        meta: {
+          title: "My Cards",
+          isNeedBack: false,
+        },
+        component: View.MyCard,
       },
     ],
   },

@@ -18,6 +18,16 @@ import Profile from "./account/profile.vue";
 import Fruits from "./fruits/index.vue";
 // 详情
 import Product from "./product/index.vue";
+// 订单
+import Order from "./account/order.vue";
+// Edit Profile
+import EditProfile from "./account/editProfile.vue";
+// change passWord
+import ChangePassword from "./account/changePassword.vue";
+// myCard
+import MyCard from "./account/myCard.vue";
+// new NewCard
+import NewCard from "./account/newCard.vue";
 export {
   Index,
   Welcome,
@@ -29,4 +39,9 @@ export {
   Register,
   Fruits,
   Product,
+  Order,
+  EditProfile,
+  ChangePassword,
+  MyCard,
+  NewCard
 };

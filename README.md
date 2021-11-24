@@ -55,7 +55,7 @@ yarn
 
 # 对 vue + tsx 思考
 
-- 个人觉得业务方面代码 template 模板语法够用，对于灵活性更高的场景可以使用 tsx(如 v-if 与 v-else),查看 src/views/login/register.tsx,属于试验代码，真实开发场景下觉得通过`component`组件渲染更加优雅。
+- 个人觉得业务方面代码 template 模板语法够用，对于灵活性更高的场景可以使用 tsx(如组件，v-if 与 v-else等),查看 src/views/login/register.tsx,属于试验代码，真实开发场景下觉得通过`component`组件渲染更加优雅。
 
 ```javascript
 // component

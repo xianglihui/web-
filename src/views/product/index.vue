@@ -15,10 +15,22 @@
     </p>
     <div class="step">
       <div>
-        <van-stepper v-model="value" input-width="180" button-size="50" step="2" />
+        <van-stepper
+          v-model="value"
+          input-width="180"
+          button-size="50"
+          step="2"
+        />
       </div>
       <div>
         <van-image width="30" height="30" :src="scImg" />
+      </div>
+    </div>
+  </div>
+  <div class="productContext" ref="productRef">
+    <div class="pro">
+      <div v-for="(item, index) in goods" :key="index" class="productList">
+        <productItem :goods="item"></productItem>
       </div>
     </div>
   </div>
@@ -26,12 +38,53 @@
 
 <script lang="ts" setup>
 import { defineComponent, reactive, toRefs, onMounted, ref } from "vue";
+import productItem from "@/components/productItem.vue";
+import BScroll from "better-scroll";
 import s1 from "../../assets/images/s1.png";
 import pbg from "../../assets/images/pbg.png";
 import sc from "../../assets/images/sc.png";
+import fruitImg from "../../assets/images/apple.png";
+const productRef = ref<any>(null);
 const s1Img = ref(s1);
 const pbgImg = ref(pbg);
 const scImg = ref(sc);
+const goods = reactive([
+  {
+    img: fruitImg,
+    name: "Red Apple",
+    kg: "1kg",
+    priceg: "priceg",
+    price: "4.99",
+  },
+  {
+    img: fruitImg,
+    name: "Red Apple",
+    kg: "1kg",
+    priceg: "priceg",
+    price: "4.99",
+  },
+  {
+    img: fruitImg,
+    name: "Red Apple",
+    kg: "1kg",
+    priceg: "priceg",
+    price: "4.99",
+  },
+  {
+    img: fruitImg,
+    name: "Red Apple",
+    kg: "1kg",
+    priceg: "priceg",
+    price: "4.99",
+  },
+]);
+onMounted(() => {
+  const productScrollX = new BScroll(productRef.value, {
+    scrollX: true,
+    scrollY: false,
+    probeType: 3, // listening scroll event
+  });
+});
 </script>
 
 <style lang="scss" scoped>
@@ -70,9 +123,22 @@ const scImg = ref(sc);
     font-size: 14px;
   }
 }
+.productContext {
+  width: 100%;
+  margin: 32px 0;
+  white-space: nowrap;
+  .pro {
+    height: 200px;
+    display: inline-block;
+  }
+  .productList {
+    display: inline-block;
+    margin-right: 16px;
+  }
+}
 .step {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

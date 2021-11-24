@@ -7,7 +7,12 @@
         :border="false"
         @click="profile"
       />
-      <van-cell title="Orders" icon="location-o" :border="false" />
+      <van-cell
+        title="Orders"
+        icon="location-o"
+        :border="false"
+        @click="order"
+      />
       <van-cell title="Address" icon="location-o" :border="false" />
       <van-cell title="Payment" icon="location-o" :border="false" />
     </van-cell-group>
@@ -31,6 +36,9 @@ const list = reactive([
 ]);
 const profile = () => {
   router.push({ path: "/account/profile" });
+};
+const order = () => {
+  router.push({ path: "/account/order" });
 };
 </script>
 
