@@ -14,8 +14,15 @@
         icon="location-o"
         :border="false"
         is-link
+        @click="change"
       />
-      <van-cell title="My Cards" icon="location-o" :border="false" is-link />
+      <van-cell
+        title="My Cards"
+        icon="location-o"
+        :border="false"
+        is-link
+        @click="myCard"
+      />
     </van-cell-group>
     <div class="title">App Settings</div>
     <van-cell-group :border="false">
@@ -58,6 +65,12 @@ const titleT = reactive({
 });
 const edit = () => {
   router.push({ path: "/account/profile/edit" });
+};
+const change = () => {
+  router.push({ path: "/account/profile/change" });
+};
+const myCard = () => {
+  router.push({ path: "/account/profile/myCards" });
 };
 </script>
 

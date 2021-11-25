@@ -8,13 +8,17 @@ import "vant/lib/index.css";
 import "./utils/rem.js";
 import "./common/common.css";
 import "./common/rest.scss";
-const noNavBar = ["Welcome","Product"];
+
+const noNavBar = ["Welcome", "Product"];
 router.beforeEach((to, from, next) => {
   const title = to.meta.title as string;
   const isNeedBack = to.meta.isNeedBack as boolean;
+  const isNeedAdd = to.meta.isNeedAdd as boolean;
+  console.log('isNeedAdd@',to.meta)
   store.commit("setBar", !noNavBar.includes(title));
   store.commit("setTitle", title);
   store.commit("setBack", isNeedBack);
+  store.commit("setAdd", isNeedAdd);
   next();
 });
 

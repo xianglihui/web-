@@ -18,7 +18,13 @@
         @click="handleShare"
         :style="{ color: navConfig.rightTextColor }"
       >
-        {{ navConfig.rightText }}
+        <van-icon
+          v-if="navConfig.isNeedAdd"
+          name="plus"
+          color="#F37A20"
+          size="0.5rem"
+          @click="add"
+        />
       </div>
     </div>
   </div>
@@ -34,17 +40,29 @@ interface Config {
   rightTextColor: string;
   isNeedBack: string;
   titleWeight: number;
+  isNeedAdd: boolean;
 }
 import { eqMethod } from "../utils/provingEq.js";
-import { defineComponent, reactive, toRefs, computed } from "vue";
+import {
+  defineComponent,
+  reactive,
+  toRefs,
+  computed,
+  defineEmits,
+  defineProps,
+} from "vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 const props = defineProps<{
   navConfig: Config;
 }>();
-
+const emit = defineEmits(["addFunc"]);
+console.log("props", props);
 const router = useRouter();
 const store = useStore();
+const add = () => {
+  emit("addFunc");
+};
 // 回退
 // const back = () => {
 //   if (navConfig.isBack == true) {
