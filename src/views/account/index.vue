@@ -13,8 +13,18 @@
         :border="false"
         @click="order"
       />
-      <van-cell title="Address" icon="location-o" :border="false" />
-      <van-cell title="Payment" icon="location-o" :border="false" />
+      <van-cell
+        title="Address"
+        icon="location-o"
+        :border="false"
+        @click="address"
+      />
+      <van-cell
+        title="Payment"
+        icon="location-o"
+        :border="false"
+        @click="payment"
+      />
     </van-cell-group>
   </div>
 </template>
@@ -39,6 +49,12 @@ const profile = () => {
 };
 const order = () => {
   router.push({ path: "/account/order" });
+};
+const address = () => {
+  router.push({ path: "/account/addresses" });
+};
+const payment = () => {
+  router.push({ path: "/account/payment" });
 };
 </script>
 

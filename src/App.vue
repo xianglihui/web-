@@ -40,6 +40,8 @@ const addFunc = () => {
     case 1:
       router.push({ path: "/account/profile/newCard" });
       break;
+    case 2:
+      router.push({ path: "/account/addresses/newAddresses" });
     default:
       break;
   }

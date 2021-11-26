@@ -33,20 +33,11 @@
           <div class="orderMonth">March 5, 2019</div>
           <div class="goingTime">6:30 pm</div>
         </div>
-        <van-steps direction="vertical" :active="0">
-          <van-step>
-            <van-image width="45" height="60" :src="orderStep1" />
-            We are packin your items...
-          </van-step>
-          <van-step>
-            <h3>【城市】物流状态2</h3>
-            <p>2016-07-11 10:00</p>
-          </van-step>
-          <van-step>
-            <h3>快件已发货</h3>
-            <p>2016-07-10 09:30</p>
-          </van-step>
-        </van-steps>
+        <!-- <div
+          class="vertical"
+          v-if="direction.toLocaleUpperCase() === 'V'"
+        ></div> -->
+        <verticalStep :dataSource="dataSource"></verticalStep>
       </div>
       <div>
         <div v-if="false">
@@ -62,13 +53,18 @@
 
 <script lang="ts" setup>
 import { defineComponent, reactive, toRefs, onMounted, ref } from "vue";
+import verticalStep from "@/components/verticalStep.vue";
 import orderIcon from "../../assets/images/order1.png";
 import order1 from "../../assets/images/order-1.png";
+import order2 from "../../assets/images/order-2.png";
+import order3 from "../../assets/images/order-3.png";
 import buy from "../../assets/images/order.png";
 const buyBg = ref(buy);
 const buyIcon = ref(orderIcon);
 const active = ref(0);
 const orderStep1 = ref(order1);
+const orderStep2 = ref(order2);
+const orderStep3 = ref(order3);
 const name = ref(0);
 console.log("active", active.value);
 const list = reactive([
@@ -86,6 +82,26 @@ const test = reactive([
   },
   {
     name: "History",
+  },
+]);
+const dataSource = reactive([
+  {
+    active: true,
+    text: "1",
+    desc: "We are packin your items...",
+    img: orderStep1,
+  },
+  {
+    active: true,
+    text: "2",
+    desc: "Your order is delivering to your location...",
+    img: orderStep3,
+  },
+  {
+    active: false,
+    text: "3",
+    desc: "Your order is received.",
+    img: orderStep2,
   },
 ]);
 const onClickTab = (e: any) => {

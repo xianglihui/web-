@@ -28,6 +28,14 @@ import ChangePassword from "./account/changePassword.vue";
 import MyCard from "./account/myCard.vue";
 // new NewCard
 import NewCard from "./account/newCard.vue";
+// Addresses
+import Addresses from "./account/addresses.vue";
+// New Addresses
+import Newaddresses from "./account/newAddresses.vue";
+// Edit Addresses
+import Editaddresses from "./account/editAddresses.vue";
+// payment
+import Payment from "./account/payment.vue"
 export {
   Index,
   Welcome,
@@ -43,5 +51,9 @@ export {
   EditProfile,
   ChangePassword,
   MyCard,
-  NewCard
+  NewCard,
+  Addresses,
+  Newaddresses,
+  Editaddresses,
+  Payment
 };

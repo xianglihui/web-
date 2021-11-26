@@ -117,6 +117,43 @@ const routes: Array<RouteRecordRaw> = [
         component: View.NewCard,
       },
       {
+        path: "/account/addresses",
+        name: "addresses",
+        meta: {
+          title: "Addresses",
+          isNeedBack: true,
+          isNeedAdd: true,
+        },
+        component: View.Addresses,
+      },
+      {
+        path: "/account/addresses/newAddresses",
+        name: "newAddresses",
+        meta: {
+          title: "New Addresses",
+          isNeedBack: true,
+        },
+        component: View.Newaddresses,
+      },
+      {
+        path: "/account/addresses/editAddresses",
+        name: "editAddresses",
+        meta: {
+          title: "Edit Addresses",
+          isNeedBack: true,
+        },
+        component: View.Editaddresses,
+      },
+      {
+        path: "/account/payment",
+        name: "payment",
+        meta: {
+          title: "Payment",
+          isNeedBack: true,
+        },
+        component: View.Payment,
+      },
+      {
         path: "/account/profile/myCards",
         name: "myCards",
         meta: {
