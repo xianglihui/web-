@@ -35,7 +35,9 @@ import Newaddresses from "./account/newAddresses.vue";
 // Edit Addresses
 import Editaddresses from "./account/editAddresses.vue";
 // payment
-import Payment from "./account/payment.vue"
+import Payment from "./account/payment.vue";
+// orderConfirm
+import ConfirmOrder from "./account/confirmOrder.vue";
 export {
   Index,
   Welcome,
@@ -55,5 +57,6 @@ export {
   Addresses,
   Newaddresses,
   Editaddresses,
-  Payment
+  Payment,
+  ConfirmOrder,
 };

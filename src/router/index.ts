@@ -154,6 +154,15 @@ const routes: Array<RouteRecordRaw> = [
         component: View.Payment,
       },
       {
+        path: "/account/payment/confirmOrder",
+        name: "confirmOrder",
+        meta: {
+          title: "ConfirmOrder",
+          isNeedBack: true,
+        },
+        component: View.ConfirmOrder,
+      },
+      {
         path: "/account/profile/myCards",
         name: "myCards",
         meta: {

@@ -9,7 +9,7 @@ import "./utils/rem.js";
 import "./common/common.css";
 import "./common/rest.scss";
 
-const noNavBar = ["Welcome", "Product"];
+const noNavBar = ["Welcome", "Product","ConfirmOrder"];
 router.beforeEach((to, from, next) => {
   const title = to.meta.title as string;
   const isNeedBack = to.meta.isNeedBack as boolean;
