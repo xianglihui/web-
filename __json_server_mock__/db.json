@@ -1,1 +1,53 @@
-{}
+{
+  "autoToken": [
+    {
+      "token": "1111"
+    }
+  ],
+  "getUserInfo": {
+    "id": "1",
+    "name": "测试用户"
+  },
+  "getPopularDeals": [
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 1,
+      "name": "Red Apple",
+      "price": "4.99",
+      "kg": "1kg",
+      "priceg": "priceg"
+    },
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 1,
+      "name": "Red Apple",
+      "price": "4.99",
+      "kg": "1kg",
+      "priceg": "priceg"
+    },
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 1,
+      "name": "Red Apple",
+      "price": "4.99",
+      "kg": "1kg",
+      "priceg": "priceg"
+    },
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 1,
+      "name": "Red Apple",
+      "price": "4.99",
+      "kg": "1kg",
+      "priceg": "priceg"
+    },
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 1,
+      "name": "Red Apple",
+      "price": "4.99",
+      "kg": "1kg",
+      "priceg": "priceg"
+    }
+  ]
+}

@@ -37,12 +37,14 @@
 
 <script lang="ts" setup>
 import { reactive, onMounted, ref } from "vue";
+import { useCurrentInstance } from "../../utils/toolset";
 import baseSearch from "@/components/baseSearch.vue";
 import BScroll from "better-scroll";
 import productItem from "@/components/productItem.vue";
 import fruit from "../../assets/images/itembg.png";
 import fruitImg from "../../assets/images/apple.png";
-
+const { proxy } = useCurrentInstance(); // 拿全局api
+console.log("proxy", proxy.$testApi);
 const categoryList = reactive([
   {
     img: fruit,
@@ -101,7 +103,13 @@ const productRef = ref<any>(null);
 const leftItemClick = (e: number) => {
   leftActive.value = e;
 };
+const getAuthTree = () => {
+  proxy.$testApi.index.getPopularDeals().then((res: any) => {
+    console.log("res", res);
+  });
+};
 onMounted(() => {
+  getAuthTree();
   const leftBs = new BScroll(leftScroll.value, {
     scrollX: true,
     scrollY: false,

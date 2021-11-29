@@ -3,11 +3,11 @@ import { Request } from "./request";
 
 class api {
   /* api接口模块 */
-  public static article = {
+  public static index = {
     // 直接在index.ts中设置不需要Base模块
-    genre: () => Request.get("/api/SnArticle/GetCountAsync"),
+    // getPopularDeals: () => Request.get("/getPopularDeals"),
     // 基于Base模块封装调用
-    genres: () => Request.get(`${Base.env}/api/SnArticle/GetCountAsync`),
+    getPopularDeals: () => Request.get(`${Base.env}/getPopularDeals`),
   };
 }
 export { api };
