@@ -6,6 +6,7 @@ import path from "path";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 // 返回当前Node.js进程执行时的工作目录
 const CWD = process.cwd();
+console.log('CWD',CWD)
 // 环境变量
 export default ({ mode }: ConfigEnv): UserConfig => {
   // 环境变量

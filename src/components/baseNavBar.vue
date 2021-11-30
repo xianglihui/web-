@@ -57,7 +57,6 @@ const props = defineProps<{
   navConfig: Config;
 }>();
 const emit = defineEmits(["addFunc"]);
-console.log("props", props);
 const router = useRouter();
 const store = useStore();
 const add = () => {

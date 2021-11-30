@@ -1,60 +1,98 @@
 <template>
-  <div>
-    <!-- search -->
-    <baseSearch></baseSearch>
-    <!-- categories main -->
-    <div class="categories">
-      <div v-for="(item, index) in list" :key="index" class="item">
-        <van-image width="100" height="100" :src="item.img" />
-      </div>
+  <div class="categiruesWarp">
+    <van-search v-model="keyword" placeholder="Search" />
+    <div class="context">
+      <van-row gutter="22">
+        <van-col span="8" v-for="(item, index) in categories" :key="index">
+          <van-image width="100" height="100" round :src="item.fruitImg" />
+          <div class="fruitName">{{ item.fruitName }}</div>
+        </van-col>
+      </van-row>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineComponent, reactive, toRefs, onMounted, ref } from "vue";
-import baseSearch from "@/components/baseSearch.vue";
-import fruit from "../../assets/images/itembg.png";
+import { ref, watch, reactive, provide } from "vue";
+import product1 from "@/assets/images/product-1.png";
 
-const list = reactive([
+const keyword = ref("");
+
+const categories: Array<{
+  fruitImg: string;
+  fruitName: string;
+  cid: number;
+}> = reactive([
   {
-    img: fruit,
-    name: "Fruits",
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 1,
   },
   {
-    img: fruit,
-    name: "Fruits",
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 2,
   },
   {
-    img: fruit,
-    name: "Fruits",
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 3,
   },
   {
-    img: fruit,
-    name: "Fruits",
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 4,
   },
   {
-    img: fruit,
-    name: "Fruits",
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 4,
   },
   {
-    img: fruit,
-    name: "Fruits",
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 4,
   },
   {
-    img: fruit,
-    name: "Fruits",
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 4,
+  },
+  {
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 4,
+  },
+  {
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 4,
+  },
+  {
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 4,
+  },
+  {
+    fruitImg: product1,
+    fruitName: "Fruits",
+    cid: 4,
   },
 ]);
 </script>
 
-<style lang="scss">
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 8px;
-  .item {
-    margin: 0 8px;
+<style lang="scss" scoped>
+.categiruesWarp {
+  padding: 0 16px;
+  .context {
+    margin: 10px 12px;
+    .fruitName {
+      text-align: center;
+      margin: 20px;
+      font-size: 15px;
+      line-height: 18px;
+      color: #6d3805;
+    }
   }
 }
 </style>

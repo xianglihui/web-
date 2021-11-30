@@ -4,11 +4,13 @@ export interface State {
   isBack: boolean;
   isAdd: boolean;
   routeType: number;
+  token: string;
 }
 export interface setState {
   [proppName: string]: string;
 }
 const state = {
+  token: "", //token
   title: "", //nav title
   isNoBar: false, //是否需要navBar
   isBack: false, // 是否需要后退
@@ -16,6 +18,10 @@ const state = {
   routeType: 0, //根据值跳转页面
 };
 const mutations = {
+  saveToken(state: setState, value: string) {
+    state.token = value;
+    localStorage.setItem("token", value);
+  },
   setTitle(state: setState, value: string) {
     state.title = value;
   },
@@ -33,6 +39,13 @@ const mutations = {
   },
 };
 const getters = {
+  token: (st: State) => {
+    if (state.token) {
+      return state.token;
+    } else {
+      return localStorage.getItem("token");
+    }
+  },
   title: (st: State) => {
     return st["title"];
   },
@@ -49,7 +62,11 @@ const getters = {
     return st["routeType"];
   },
 };
-const actions = {};
+const actions = {
+  addToken(context: any, payload: string) {
+    context.commit("saveToken", payload);
+  },
+};
 export default {
   state,
   getters,

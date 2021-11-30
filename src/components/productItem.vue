@@ -6,25 +6,33 @@
     <div class="name">{{ goods.name }}</div>
     <div class="kg">{{ goods.kg }},{{ goods.priceg }}</div>
     <div class="price">$ {{ goods.price }}</div>
-    <div class="add">
-      <van-image width="30" height="30" :src="add" />
+    <div class="add" @click="addCart">
+      <van-image width="30" height="30" :src="addImg" />
     </div>
   </div>
 </template>
 
-<script>
-import { defineComponent, reactive, toRefs, onMounted, ref } from "vue";
+<script lang="ts" setup>
+import { toRefs, ref, defineProps, defineEmits } from "vue";
 import add from "@/assets/images/add.png";
-export default defineComponent({
-  props: ["goods"],
-  setup(props) {
-    const { goods } = toRefs(props);
-    return {
-      goods,
-      add,
-    };
+const addImg = ref(add);
+const emit = defineEmits(["add"]);
+const { goods } = defineProps({
+  goods: {
+    type: Object as () => {
+      img: string;
+      name: string;
+      kg: string;
+      priceg: string;
+      price: string;
+    },
+    required: true,
+    default: {},
   },
 });
+const addCart = () => {
+  emit("add");
+};
 </script>
 
 <style lang="scss">

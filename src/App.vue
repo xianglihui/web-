@@ -46,7 +46,6 @@ const addFunc = () => {
       break;
   }
 };
-console.log("isNeedAdd", isNeedAdd.value);
 // navBar配置
 const navConfig = reactive({
   isBack: true, // 回退默认为true

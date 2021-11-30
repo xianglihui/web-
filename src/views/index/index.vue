@@ -5,7 +5,7 @@
     <!-- categories header -->
     <div class="flex-spacebetween">
       <span class="categories">categories</span>
-      <span class="seeAll">see all</span>
+      <span class="seeAll" @click="test">see all</span>
     </div>
     <!-- categories main -->
     <div class="left-content" ref="leftScroll">
@@ -22,13 +22,17 @@
     </div>
     <div class="flex-spacebetween">
       <span class="categories">Popular deals</span>
-      <span class="seeAll">see all</span>
+      <span class="seeAll" @click="goPopular">see all</span>
     </div>
     <!-- product item -->
     <div class="context" ref="productRef">
       <div class="pro">
-        <div v-for="(item, index) in goods" :key="index" class="productList">
-          <productItem :goods="item"></productItem>
+        <div
+          v-for="(item, index) in goods.products"
+          :key="index"
+          class="productList"
+        >
+          <productItem :goods="item" @add="add(item)"></productItem>
         </div>
       </div>
     </div>
@@ -36,15 +40,26 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, onMounted, ref } from "vue";
+// 依赖
+import { reactive, onMounted, ref, nextTick, computed } from "vue";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
+// 工具类
 import { useCurrentInstance } from "../../utils/toolset";
-import baseSearch from "@/components/baseSearch.vue";
 import BScroll from "better-scroll";
+// 组件
+import baseSearch from "@/components/baseSearch.vue";
 import productItem from "@/components/productItem.vue";
-import fruit from "../../assets/images/itembg.png";
-import fruitImg from "../../assets/images/apple.png";
-const { proxy } = useCurrentInstance(); // 拿全局api
-console.log("proxy", proxy.$testApi);
+// 静态资源
+import fruit from "../../assets/images/product-1.png";
+// 拿全局api
+const { proxy } = useCurrentInstance();
+const store = useStore();
+const router = useRouter();
+// token
+const token = computed(() => {
+  return store.getters.token;
+});
 const categoryList = reactive([
   {
     img: fruit,
@@ -67,60 +82,95 @@ const categoryList = reactive([
     name: "水果",
   },
 ]);
-const goods = reactive([
-  {
-    img: fruitImg,
-    name: "Red Apple",
-    kg: "1kg",
-    priceg: "priceg",
-    price: "4.99",
-  },
-  {
-    img: fruitImg,
-    name: "Red Apple",
-    kg: "1kg",
-    priceg: "priceg",
-    price: "4.99",
-  },
-  {
-    img: fruitImg,
-    name: "Red Apple",
-    kg: "1kg",
-    priceg: "priceg",
-    price: "4.99",
-  },
-  {
-    img: fruitImg,
-    name: "Red Apple",
-    kg: "1kg",
-    priceg: "priceg",
-    price: "4.99",
-  },
-]);
+let goods = reactive({
+  products: [],
+});
+
 const leftActive = ref<number>(0);
 const leftScroll = ref<any>(null);
 const productRef = ref<any>(null);
 const leftItemClick = (e: number) => {
   leftActive.value = e;
 };
-const getAuthTree = () => {
-  proxy.$testApi.index.getPopularDeals().then((res: any) => {
+// 获取热卖单品
+const getPopular = () => {
+  return proxy.$testApi.index.getPopularDeals().then(async (res: any) => {
+    console.log("res", res);
+    await nextTick();
+    goods.products = res.data;
+  });
+};
+// 获取用户信息
+const getUserInfo = () => {
+  proxy.$testApi.index.getUserInfo().then((res: any) => {
+    console.log("获取用户信息", res);
+  });
+};
+// 添加购物车
+const add = async (e: any) => {
+  await isLogin();
+  console.log("添加购物车", e);
+  const params = {
+    img: e.img,
+    id: e.id,
+    name: e.name,
+    price: e.price,
+    kg: e.kg,
+    priceg: e.priceg,
+  };
+  // proxy.$testApi.index.getCar().then((res: any) => {});
+  proxy.$testApi.cart.addCar(params).then((res: any) => {
     console.log("res", res);
   });
 };
-onMounted(() => {
-  getAuthTree();
+const test = () => {
+  console.log("test");
+};
+const goPopular = () => {
+  router.push({ path: "/fruits" });
+};
+const isLogin = () => {
+  return new Promise((reslove, reject) => {
+    if (!token.value) {
+      //未登录
+      router.push({ name: "register" });
+      return false;
+    }
+    reslove(!!token.value);
+  });
+};
+let productScrollX = reactive({});
+let leftBs = reactive({});
+
+onMounted(async () => {
+  await getUserInfo();
   const leftBs = new BScroll(leftScroll.value, {
     scrollX: true,
     scrollY: false,
     probeType: 3, // listening scroll event
+    click: true,
   });
+  console.log("productRef.value", productRef.value);
   const productScrollX = new BScroll(productRef.value, {
     scrollX: true,
     scrollY: false,
     probeType: 3, // listening scroll event
+    click: true,
+  });
+  // 重新计算 BetterScroll
+  getPopular().then((res: any) => {
+    productScrollX.refresh();
   });
 });
+// watchEffect(() => {
+//   nextTick(() => {
+//     console.log("productScrollX", productScrollX);
+//     productScrollX && ;
+//   });
+// });
+// defineExpose({
+//   ...toRefs(goods),
+// });
 </script>
 
 <style lang="scss">

@@ -4,9 +4,21 @@
       "token": "1111"
     }
   ],
+  "saveUserInfo": {
+    "username": "测试专用c4111",
+    "phone": "15088907309"
+  },
+  "createToken": {
+    "token": "110"
+  },
+  "savePassWord": {
+    "password": "111111",
+    "confirmPassword": "111111"
+  },
   "getUserInfo": {
     "id": "1",
-    "name": "测试用户"
+    "name": "测试用户",
+    "isLogin": false
   },
   "getPopularDeals": [
     {
@@ -19,35 +31,46 @@
     },
     {
       "img": "https://img-cdn.lonsid.co/test/apple.png",
-      "id": 1,
+      "id": 2,
       "name": "Red Apple",
-      "price": "4.99",
-      "kg": "1kg",
+      "price": "14.99",
+      "kg": "2kg",
       "priceg": "priceg"
     },
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 3,
+      "name": "Red Apple",
+      "price": "24.99",
+      "kg": "3kg",
+      "priceg": "priceg"
+    },
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 4,
+      "name": "Red Apple",
+      "price": "34.99",
+      "kg": "4kg",
+      "priceg": "priceg"
+    },
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 5,
+      "name": "Red Apple",
+      "price": "44.99",
+      "kg": "5kg",
+      "priceg": "priceg"
+    }
+  ],
+  "addCar": [
     {
       "img": "https://img-cdn.lonsid.co/test/apple.png",
       "id": 1,
       "name": "Red Apple",
       "price": "4.99",
       "kg": "1kg",
-      "priceg": "priceg"
-    },
-    {
-      "img": "https://img-cdn.lonsid.co/test/apple.png",
-      "id": 1,
-      "name": "Red Apple",
-      "price": "4.99",
-      "kg": "1kg",
-      "priceg": "priceg"
-    },
-    {
-      "img": "https://img-cdn.lonsid.co/test/apple.png",
-      "id": 1,
-      "name": "Red Apple",
-      "price": "4.99",
-      "kg": "1kg",
-      "priceg": "priceg"
+      "priceg": "priceg",
+      "num": 1
     }
   ]
 }

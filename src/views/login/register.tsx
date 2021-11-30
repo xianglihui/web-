@@ -31,9 +31,13 @@ export default defineComponent({
     watch([route], () => {
       currentStep.value = Number.parseInt((route.query.step || "0") as string);
     });
+    // style
+    const style1 = {
+      textAlign: "center",
+    };
     return () =>
       h(
-        <div class="img">
+        <div style={{ textAlign: "center" }}>
           <van-image width="300" height="270" src={imgs[currentStep.value]} />
           {currentStep.value === 0 ? (
             <Step1></Step1>

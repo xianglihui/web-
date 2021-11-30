@@ -1,5 +1,10 @@
 <template>
-  <van-field v-model="phone" name="phone" placeholder="Phone Number">
+  <van-field
+    v-model="phone"
+    name="phone"
+    placeholder="Phone Number"
+    @update:model-value="update"
+  >
     <template #label>
       <div class="flex-align-justify-spacebetween">
         <van-image width="28px" :src="national" />
@@ -10,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+import { useCustomFieldValue } from "@vant/use";
 import national from "@/assets/images/national.png";
 import {
   ref,
@@ -20,12 +26,18 @@ import {
   reactive,
   onMounted,
 } from "vue";
-const { phone } = defineProps({
-  phone: {
-    type: String as () => string, //(string也可以是其他你自定义的接口)
-    required: true,
-  },
-});
+const phone = ref("");
+const emit = defineEmits(["getVal"]);
+const update = (e: any) => {
+  emit("getVal", e);
+};
+// const { phone } = defineProps({
+//   phone: {
+//     type: String as () => string,
+//     required: true,
+//   },
+// });
+useCustomFieldValue(() => phone.value);
 </script>
 
 <style></style>

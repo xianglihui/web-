@@ -22,7 +22,7 @@ export default defineComponent({
               <van-field
                 v-model={username.value}
                 name="用户名"
-                placeholder="Name Surname"
+                placeholder="Name Surname1"
                 rules={rules[0]}
               />
               <Vfield pData={phone as any}></Vfield>

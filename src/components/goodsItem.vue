@@ -16,24 +16,46 @@
       </div>
     </div>
     <template #right>
-      <van-button square text="删除" type="danger" class="delete-button" />
+      <van-button
+        square
+        text="删除"
+        type="danger"
+        class="delete-button"
+        @click="deleteGood(goods.id)"
+      />
     </template>
   </van-swipe-cell>
 </template>
 
-<script>
-import { defineComponent, reactive, toRefs, onMounted, ref } from "vue";
-export default defineComponent({
-  components: {},
-  props: ["goods"],
-  setup(props) {
-    const { goods } = toRefs(props);
-    console.log("goods", goods);
-    return {
-      goods,
-    };
+<script lang="ts" setup>
+import { ContactList } from "vant";
+import { defineProps, defineEmits, watch } from "vue";
+// const { goods } = toRefs(props);
+const emit = defineEmits(["deleteGood"]);
+const { goods } = defineProps({
+  goods: {
+    type: Object as () => {
+      img: string;
+      name: string;
+      kg: string;
+      priceg: string;
+      price: string;
+      num: number;
+    },
+    required: true,
+    default: {},
   },
 });
+let unitPrice = 0;
+console.log("goods", goods);
+watch([goods.num], (val: any) => {
+  console.log("val", val);
+  unitPrice = Number(goods.num) * Number(goods.price);
+  console.log("unitPrice", unitPrice);
+});
+const deleteGood = (id: number) => {
+  emit("deleteGood", id);
+};
 </script>
 <style lang="scss">
 .delete-button {

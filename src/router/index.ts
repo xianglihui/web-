@@ -3,10 +3,10 @@ import BaseLayout from "../components/baseLayout.vue";
 import * as View from "../views";
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/layout",
+    path: "/",
     component: BaseLayout,
     name: "BaseLayout",
-    redirect: { name: "Index" },
+    redirect: { name: "index" },
     children: [
       {
         path: "/index",
@@ -40,7 +40,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "fruits",
         meta: {
           title: "Fruits",
-          isNeedBack: false,
+          isNeedBack: true,
         },
         component: View.Fruits,
       },
@@ -67,7 +67,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "order",
         meta: {
           title: "order",
-          isNeedBack: false,
+          isNeedBack: true,
         },
         component: View.Order,
       },
@@ -85,7 +85,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "profile",
         meta: {
           title: "Profile",
-          isNeedBack: false,
+          isNeedBack: true,
         },
         component: View.Profile,
       },
@@ -94,7 +94,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "editProfile",
         meta: {
           title: "Edit Profile",
-          isNeedBack: false,
+          isNeedBack: true,
         },
         component: View.EditProfile,
       },
@@ -103,7 +103,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "changePassword",
         meta: {
           title: "Change Password",
-          isNeedBack: false,
+          isNeedBack: true,
         },
         component: View.ChangePassword,
       },
@@ -112,7 +112,7 @@ const routes: Array<RouteRecordRaw> = [
         name: "newCard",
         meta: {
           title: "New Card",
-          isNeedBack: false,
+          isNeedBack: true,
         },
         component: View.NewCard,
       },
@@ -192,6 +192,10 @@ const routes: Array<RouteRecordRaw> = [
     },
     component: View.Register,
   },
+  {
+    path: '/:catchAll(.*)',
+    redirect: { name: 'BaseLayout' }
+}
 ];
 const router = createRouter({
   history: createWebHashHistory(),

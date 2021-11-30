@@ -27,7 +27,7 @@ export default defineComponent({
           <van-field
             v-model={pData.value}
             name="用户名"
-            placeholder="Name Surname"
+            placeholder="Name Surname1"
           >
             <template v-slots={label} >{label.default()}</template>
           </van-field>

@@ -72,7 +72,7 @@ const test = reactive([
   padding: 0 16px;
   margin-top: 10px;
   column-count: 2;
-//   column-gap: 0;
+  //   column-gap: 0;
   //   page-break-inside: avoid;
   //   margin-top: 10px;
   //   display: flex;

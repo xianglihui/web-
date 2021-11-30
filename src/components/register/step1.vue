@@ -9,16 +9,7 @@
             placeholder="Name Surname"
           />
           <br />
-          <simpleInput></simpleInput>
-          <!-- <van-field v-model="phone" name="phone" placeholder="Phone Number">
-            <template #label>
-              <div class="flex-align-justify-spacebetween">
-                <van-image width="28px" :src="national" />
-                <van-icon name="play" size="12" />
-              </div>
-            </template>
-          </van-field> -->
-          <!-- <istep></istep> -->
+          <simpleInput @getVal="getVal"></simpleInput>
         </van-cell-group>
       </van-form>
     </van-config-provider>
@@ -31,29 +22,60 @@
 
 <script lang="ts" setup>
 // import istep from "@/components/register/istep.vue";
-import simpleInput from "@/components/simpleInput.vue"
-import { useRouter } from "vue-router";
+// 依赖
 import { ref, defineProps, defineEmits, inject } from "vue";
+import simpleInput from "@/components/simpleInput.vue";
+import { useRouter } from "vue-router";
+// 工具
+import { Notify } from "vant";
+import { useCurrentInstance } from "../../utils/toolset";
+const { proxy } = useCurrentInstance();
+
 const router = useRouter();
 const themeVars = {
   cellBackgroundColor: "#F3F3F3",
   fieldLabelWidth: "50px",
 };
 const username = ref("");
-const phone = ref("");
+let phone = ref("");
 const emit = defineEmits(["stepFunc"]);
-const onSubmit = () => {
-  console.log("submit");
+const onSubmit = (value: any) => {
+  console.log("value", value);
+  phone = value;
 };
 const next: any = inject("next");
+const getVal = (e: string) => {
+  phone.value = e;
+};
 const stepNext = () => {
   // emit("stepFunc");
-  console.log("@@@");
-  next();
+  if (!username.value) {
+    Notify("姓名是必须的");
+    return;
+  }
+  if (
+    phone.value &&
+    (!/^[1][345789]\d{9}$/.test(phone.value) ||
+      !/^[1-9]\d*$/.test(phone.value) ||
+      phone.value.length !== 11)
+  ) {
+    Notify("手机格式不正确");
+    return;
+  }
+  const params = {
+    username: username.value,
+    phone: phone.value,
+  };
+  proxy.$testApi.login.saveUserInfo(params).then((res: any) => {
+    // console.log("success");
+    Notify("保存成功");
+    next();
+  });
 };
 //
 defineExpose({
   stepNext,
+  onSubmit,
 });
 </script>
 <style lang="scss" scoped>

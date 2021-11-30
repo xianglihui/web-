@@ -21,9 +21,37 @@ export class Request {
   };
 
   static post = (url: string, params?: any) => {
+    console.log("params", params);
     return new Promise((resolve, reject) => {
       axios
-        .post(url, qs.stringify(params))
+        .post(url, params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  };
+
+  static delete = (url: string, params?: any) => {
+    return new Promise((resolve, reject) => {
+      axios
+        .delete(`${url}` + `/` + params)
+        .then((res) => {
+          resolve(res);
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  };
+
+  static patch = (url: string, params?: any) => {
+    console.log("patch-params", params);
+    return new Promise((resolve, reject) => {
+      axios
+        .patch(url, params)
         .then((res) => {
           resolve(res);
         })

@@ -34,24 +34,25 @@
 
 <script lang="ts" setup>
 // import istep from "@/components/register/istep.vue";
-import national from "@/assets/images/national.png";
+// 依赖
+import { ref, inject, watch, reactive } from "vue";
 import { useRouter } from "vue-router";
-import {
-  ref,
-  defineProps,
-  defineEmits,
-  inject,
-  watch,
-  reactive,
-  onMounted,
-} from "vue";
+import { useStore } from "vuex";
 import { Toast } from "vant";
+import { Notify } from "vant";
+// 静态资源
+import national from "@/assets/images/national.png";
+// 工具
+import { useCurrentInstance } from "../../utils/toolset";
+const { proxy } = useCurrentInstance();
+const store = useStore();
 const router = useRouter();
 let codeList: any = reactive([]); //验证码item box
 const codeLength = ref(6); //验证码item 个数
 let code: any = ref(""); //验证码
 const showKeyboard: any = ref(false); // 键盘显示
 const paddingBottom = ref(0);
+
 watch([showKeyboard], (val: any) => {
   if (val[0] === false) {
     paddingBottom.value = 0;
@@ -88,9 +89,29 @@ const onSubmit = () => {
 const next: any = inject("onNext");
 // const next = () => {
 // //   emit("stepFunc");
-const stepNext = () => {
-  console.log("@@@");
+const up = () => {
+  // console.log("@@@");
+  console.log("code", code.value);
+  if (code.value.length < 6) {
+    Notify("请输入正确验证码");
+    return;
+  }
+  const params = {
+    token: "110",
+  };
+  console.log("@@params", params);
+  proxy.$testApi.login.createToken(params).then(async (res: any) => {
+    // console.log("success");
+    store.dispatch("addToken", params.token);
+    Notify("登陆成功");
+    router.push({ path: "/index" });
+  });
 };
+// const getToken = () => {
+//   proxy.$testApi.login.createToken().then((res: any) => {
+//     console.log("token", res.data);
+//   });
+// };
 // };
 //
 defineExpose({

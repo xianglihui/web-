@@ -20,6 +20,16 @@
 import { ref, onMounted, computed, reactive } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
+import shop0 from "../assets/images/shop-0.png";
+import shop1 from "../assets/images/shop-1.png";
+import explore0 from "../assets/images/explore-0.png";
+import explore1 from "../assets/images/explore-1.png";
+import cart0 from "../assets/images/cart-0.png";
+import cart1 from "../assets/images/cart-1.png";
+import favorite0 from "../assets/images/favorite-0.png";
+import favorite1 from "../assets/images/favorite-1.png";
+import account0 from "../assets/images/account-0.png";
+import account1 from "../assets/images/account-1.png";
 // import baseNavBar from "./baseNavBar.vue";
 const active = ref(0);
 const route = useRoute();
@@ -44,31 +54,41 @@ const store = useStore();
 //   titleWeight: 700, //字体粗细
 // });
 
-const items: Array<{ name: string; url: string; icon: string }> = [
+const items: Array<{
+  activeIcon: string;
+  name: string;
+  url: string;
+  icon: string;
+}> = [
   {
     name: "Shop",
     url: "/index",
-    icon: "notes-o",
+    activeIcon: shop1,
+    icon: shop0,
   },
   {
     name: "Explore",
     url: "/categories",
-    icon: "idcard",
+    activeIcon: explore1,
+    icon: explore0,
   },
   {
     name: "Cart",
     url: "/cart",
-    icon: "idcard",
+    activeIcon: cart1,
+    icon: cart0,
   },
   {
     name: "Favorite",
     url: "/favorite",
-    icon: "idcard",
+    activeIcon: favorite1,
+    icon: favorite0,
   },
   {
     name: "Account",
     url: "/account",
-    icon: "idcard",
+    activeIcon: account1,
+    icon: account0,
   },
 ];
 onMounted(() => {

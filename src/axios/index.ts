@@ -145,7 +145,8 @@ instance.interceptors.response.use(
   function (config) {
     removePending(config.config);
     // 请求成功
-    if (config.status === 200 || config.status === 204) {
+    // 根据业务情况更改
+    if (config.status === 200 || config.status === 201) {
       //   setTimeout(() => {}, 400);
       return Promise.resolve(config);
     } else {

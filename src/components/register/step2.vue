@@ -8,14 +8,14 @@
           <van-cell-group inset>
             <van-field
               :left-icon="lock"
-              v-model="username"
+              v-model="password"
               type="password"
               placeholder="Password"
             />
             <br />
             <van-field
               :left-icon="lock"
-              v-model="password"
+              v-model="confirmPassword"
               type="password"
               placeholder="Confirm Password"
             />
@@ -28,26 +28,47 @@
 </template>
 
 <script lang="ts" setup>
-// import istep from "@/components/register/istep.vue";
-import lock from "@/assets/images/lock.png";
-import { useRouter } from "vue-router";
+// 依赖
 import { ref, defineProps, defineEmits, inject } from "vue";
+import { useRouter } from "vue-router";
+import { Notify } from "vant";
+// 静态资源
+import lock from "@/assets/images/lock.png";
+// 工具
+import { useCurrentInstance } from "../../utils/toolset";
+const { proxy } = useCurrentInstance();
 const router = useRouter();
 const themeVars = {
   cellBackgroundColor: "#F3F3F3",
   fieldLabelWidth: "50px",
 };
-const username = ref("");
-const phone = ref("");
-const emit = defineEmits(["stepFunc"]);
+const password = ref(""); //密码
+const confirmPassword = ref(""); //验证密码
+// const emit = defineEmits(["stepFunc"]);
 const onSubmit = () => {
   console.log("submit");
 };
 const next: any = inject("next");
 const stepNext = () => {
   // emit("stepFunc");
-  console.log('1111')
-  next();
+  let errorText = "";
+  if (!/^[0-9A-Za-z]{6,15}$/.test(password.value)) {
+    Notify("密码少于6位");
+    return;
+  }
+  if (confirmPassword.value !== password.value) {
+    Notify("两次密码不匹配");
+    return;
+  }
+  const params = {
+    password: password.value,
+    confirmPassword: password.value,
+  };
+  proxy.$testApi.login.savePassWord(params).then((res: any) => {
+    // console.log("success");
+    Notify("保存成功");
+    next();
+  });
 };
 //
 defineExpose({
