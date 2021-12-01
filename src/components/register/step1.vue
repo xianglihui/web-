@@ -17,6 +17,10 @@
       We need to verify you. We will send you a one time verification code.
     </p>
     <div class="common-btn-style btn" @click="stepNext">Next</div>
+    <div class="login">
+      <span class="desc">Already have an account?</span>
+      <span class="loginBtn" @click="login">Login</span>
+    </div>
   </div>
 </template>
 
@@ -72,6 +76,10 @@ const stepNext = () => {
     next();
   });
 };
+const login = () => {
+      router.push({ path: "/signIn" });
+  
+}
 //
 defineExpose({
   stepNext,
@@ -90,5 +98,16 @@ defineExpose({
 }
 .btn {
   margin: 0 auto;
+}
+.login {
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 16px;
+  .desc {
+    color: #7f4e1d;
+  }
+  .loginBtn {
+    color: #ff5e00;
+  }
 }
 </style>

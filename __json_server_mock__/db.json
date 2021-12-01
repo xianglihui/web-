@@ -71,6 +71,14 @@
       "kg": "1kg",
       "priceg": "priceg",
       "num": 1
+    },
+    {
+      "img": "https://img-cdn.lonsid.co/test/apple.png",
+      "id": 2,
+      "name": "Red Apple",
+      "price": "14.99",
+      "kg": "2kg",
+      "priceg": "priceg"
     }
   ]
 }

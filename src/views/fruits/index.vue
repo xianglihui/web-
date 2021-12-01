@@ -1,18 +1,20 @@
 <template>
   <baseSearch></baseSearch>
-  <van-tabs>
-    <van-tab
-      v-for="(item, index) in test"
-      :title="item.name"
-      :key="index"
-      class="box"
-    >
-      <van-image width="163" height="148" :src="Ad" />
-      <div v-for="(items, i) in item.list" :key="i" class="boxItem">
-        <productItem :goods="items"></productItem>
-      </div>
-    </van-tab>
-  </van-tabs>
+  <div class="fruitsWarp">
+    <van-tabs>
+      <van-tab
+        v-for="(item, index) in test"
+        :title="item.name"
+        :key="index"
+        class="box"
+      >
+        <van-image width="163" height="148" :src="Ad" />
+        <div v-for="(items, i) in item.list" :key="i" class="boxItem">
+          <productItem :goods="items"></productItem>
+        </div>
+      </van-tab>
+    </van-tabs>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -68,6 +70,10 @@ const test = reactive([
 </script>
 
 <style lang="scss" scoped>
+.fruitsWarp {
+  height: 100vh;
+  margin-bottom: 20px;
+}
 .box {
   padding: 0 16px;
   margin-top: 10px;

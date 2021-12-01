@@ -6,7 +6,7 @@
   <!-- footer tabbar -->
   <van-tabbar v-model="active" active-color="#ee0a24" inactive-color="#000">
     <van-tabbar-item
-      :icon="item.icon"
+      :icon="active === index ? item.activeIcon : item.icon"
       :to="item.url"
       v-for="(item, index) in items"
       :key="index"
@@ -102,8 +102,19 @@ const setActive = () => {
 </script>
 
 <style lang="scss" scoped>
+.van-tabbar {
+  width: 100vw;
+  height: 68px;
+  border-top: 1px solid #e9e9e9;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  .van-tabbar-item {
+    background-color: transparent;
+  }
+}
+
 .baseMain {
-  height: calc(100vh - 51px);
+  height: calc(100vh - 91px);
   overflow-y: auto;
 }
 </style>

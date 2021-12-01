@@ -4,6 +4,8 @@ import Index from "./index/index.vue";
 import Welcome from "./login/welcome.vue";
 // 注册
 import Register from "./login/register";
+// 登陆
+import SignIn from "./login/signUp.vue";
 // 分类
 import Categories from "./categories/index.vue";
 // 购物车
@@ -59,4 +61,5 @@ export {
   Editaddresses,
   Payment,
   ConfirmOrder,
+  SignIn
 };

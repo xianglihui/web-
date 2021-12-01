@@ -193,9 +193,18 @@ const routes: Array<RouteRecordRaw> = [
     component: View.Register,
   },
   {
-    path: '/:catchAll(.*)',
-    redirect: { name: 'BaseLayout' }
-}
+    path: "/signIn",
+    name: "signIn",
+    meta: {
+      title: "Sign In",
+      isNeedBack: true,
+    },
+    component: View.SignIn,
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: { name: "BaseLayout" },
+  },
 ];
 const router = createRouter({
   history: createWebHashHistory(),

@@ -1,5 +1,5 @@
 <template>
-  <div class="productWarp">
+  <div class="productWarp" @click="detail">
     <div class="img">
       <van-image width="70" height="76" :src="goods.img" />
     </div>
@@ -16,7 +16,7 @@
 import { toRefs, ref, defineProps, defineEmits } from "vue";
 import add from "@/assets/images/add.png";
 const addImg = ref(add);
-const emit = defineEmits(["add"]);
+const emit = defineEmits(["add", "detail"]);
 const { goods } = defineProps({
   goods: {
     type: Object as () => {
@@ -32,6 +32,9 @@ const { goods } = defineProps({
 });
 const addCart = () => {
   emit("add");
+};
+const detail = () => {
+  emit("detail");
 };
 </script>
 

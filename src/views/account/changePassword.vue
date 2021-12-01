@@ -63,7 +63,7 @@ const form = reactive({
 }
 .submit {
   position: fixed;
-  bottom: 0;
+  bottom: 30px;
   left: 50%;
   transform: translate(-50%, -50%);
   .confirm {

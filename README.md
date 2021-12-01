@@ -1,8 +1,19 @@
 # 项目搭建
 
-vite2 + vue3.0 + vuex + vue-router + typescript + json-server
+vite2 + vue3.0 + vuex + vue-router + typescript +tsx + axios + json-server
 
-# 建议开发环境
+## 版本号
+
+```
+"vite": "^2.6.4",
+"vue": "^3.2.16",
+"vuex": "4.0.0"
+"vant": "^3.2.8",
+"vue-router": "4.0.8",
+"axios": "^0.24.0",
+```
+
+## 建议开发环境
 
 - Git: - 版本管理工具
 - VS Code Extensions
@@ -10,9 +21,13 @@ vite2 + vue3.0 + vuex + vue-router + typescript + json-server
 - ESLint - 脚本代码检查
 - Prettier - 代码格式化
 
-# UI 框架
+## 相关配置说明
 
-vantUI 3.x
+1. 项目构建 vite
+2. UI 组件库 vantUI
+3. 全局状态管理 vuex
+4. 路由分发 vue-router
+5. API 接口封装 axios
 
 # 启动
 
@@ -38,15 +53,15 @@ vantUI 3.x
 |-- src
 |   |-- App.vue // 根组件
 |   |-- assets // 静态资源
-|   |-- axios // axios封装
+|   |-- axios // axios封装 & 接口api
 |   |-- common // 公共css & iconfont
 |   |-- components // 公共组件
 |   |-- env.d.ts
-|   |-- main.ts //c reateApp
+|   |-- main.ts // 入口
 |   |-- router // 路由
 |   |-- store // vuex
 |   |-- utils // 工具集
-|   `-- views
+|   `-- views // 页面
 |-- tsconfig.json
 |-- vite.config.ts // vite配置
 |-- yarn-error.log // yarn error
@@ -60,7 +75,7 @@ vantUI 3.x
 
 # 包管理工具
 
-yarn
+yarn > npm
 
 # Git 提交规范
 
@@ -80,8 +95,8 @@ yarn
 
 # 遇见的问题
 
-- provide() can only be used inside setup(),起因是想通过 router.beforeEach 拿到 meta.title 通过 provide 存储，再在子组件中通过 inject 取出，实践后报此警告并打印 undefined.
-- .tsx 无法通过`template`模板语法传递 slot 插槽（应该能实现，还得研究一下 vant 源码）,查看 src/components/field.tsx,line:32，无法插入插槽，tsx 不识别 template）
+- provide() 与 inject()，can only be used inside setup(),起因是想通过 router.beforeEach 拿到 meta.title 通过 provide 存储，再在子组件中通过 inject 取出，实践后报此警告并打印 undefined.
+- .tsx 无法通过`template`模板语法传递 `slot` 插槽（应该能实现，还得研究一下 vant 源码）,查看 src/components/field.tsx,line:32，无法插入插槽，tsx 不识别 template）
 - json-server 局限性 需要将一个多数据返回的接口拆开写
 
 # 对 vue + tsx 思考
@@ -109,13 +124,9 @@ return () =>
 
 # json-server mock
 
-1. patch
-
-```javascript
-    patchCar: (params) => Request.patch(`${Base.env}/addCar/${params.id}`, params),
-```
-
-# 已完成
-
-1. 登陆
-2. 购物车部分
+- GET    /posts
+- GET    /posts/1
+- POST   /posts
+- PUT    /posts/1
+- PATCH  /posts/1
+- DELETE /posts/1

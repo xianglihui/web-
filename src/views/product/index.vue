@@ -17,6 +17,7 @@
       <div>
         <van-stepper
           v-model="value"
+          theme="round"
           input-width="180"
           button-size="50"
           step="2"
@@ -140,5 +141,17 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+:deep(.van-stepper) {
+  box-shadow: inset 0px 0px 4px rgba(109, 56, 5, 0.2);
+  background: #f4f4f4;
+  border-radius: 30px;
+  padding: 3px;
+  button {
+    background: #fff;
+    border: #fff;
+    color: #6d3805;
+    box-shadow: 0px 1px 2px rgba(109, 56, 5, 0.2);
+  }
 }
 </style>

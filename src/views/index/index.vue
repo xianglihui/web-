@@ -32,7 +32,11 @@
           :key="index"
           class="productList"
         >
-          <productItem :goods="item" @add="add(item)"></productItem>
+          <productItem
+            :goods="item"
+            @add="add(item)"
+            @detail="detail"
+          ></productItem>
         </div>
       </div>
     </div>
@@ -128,6 +132,9 @@ const test = () => {
 };
 const goPopular = () => {
   router.push({ path: "/fruits" });
+};
+const detail = () => {
+  router.push({ path: "/product" });
 };
 const isLogin = () => {
   return new Promise((reslove, reject) => {

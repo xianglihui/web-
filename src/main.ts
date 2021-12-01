@@ -13,6 +13,7 @@ import { api } from "./axios/apis";
 const noNavBar = ["Welcome", "Product", "ConfirmOrder"];
 router.beforeEach((to, from, next) => {
   const title = to.meta.title as string;
+  (document as any).title = to.meta.title;
   const isNeedBack = to.meta.isNeedBack as boolean;
   const isNeedAdd = to.meta.isNeedAdd as boolean;
   store.commit("setBar", !noNavBar.includes(title));
