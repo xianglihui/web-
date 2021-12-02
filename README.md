@@ -101,7 +101,7 @@ yarn > npm
 
 # 对 vue + tsx 思考
 
-- 个人觉得业务方面代码 template 模板语法够用，对于灵活性更高的场景可以使用 tsx(如组件，v-if 与 v-else 等),查看 src/views/login/register.tsx,属于试验代码，真实开发场景下觉得通过`component`组件渲染更加优雅。
+- 个人觉得业务方面代码 template 模板语法够用，对于灵活性更高的场景可以使用 tsx(如组件，v-if 与 v-else 等),查看 src/views/login/register.tsx,属于试验代码，真实开发场景下觉得通过`component`组件渲染更加优雅(参考 src/views/regoster1.vue)。
 
 ```javascript
 // component
@@ -124,9 +124,9 @@ return () =>
 
 # json-server mock
 
-- GET    /posts
-- GET    /posts/1
-- POST   /posts
-- PUT    /posts/1
-- PATCH  /posts/1
+- GET /posts
+- GET /posts/1
+- POST /posts
+- PUT /posts/1
+- PATCH /posts/1
 - DELETE /posts/1
